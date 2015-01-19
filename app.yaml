@@ -1,4 +1,8 @@
-application: formidable-pact-829
+## production 
+# application: formidable-pact-829
+## staging
+application: skilled-flight-830
+
 version: 1
 runtime: python27
 api_version: 1
@@ -6,20 +10,39 @@ threadsafe: true
 
 handlers:
 - url: /css
-  static_dir: css
+  static_dir: public/css
 - url: /js
-  static_dir: js
+  static_dir: public/js
 - url: /font
-  static_dir: font
+  static_dir: public/font
 - url: /img
-  static_dir: img
+  static_dir: public/img
+
+- url: /robot.txt
+  static_files: public/robot.txt
+  upload: public/robot.txt
+
+- url: /favicon.ico
+  static_files: public/favicon.ico
+  upload: public/favicon.ico
+
+- url: /index.html
+  static_files: public/index.html
+  upload: public/index.html
+
+- url: /
+  static_files: public/index.html
+  upload: public/index.html
 
 - url: /.*
-  script: zemis.application
+  static_files: public/notfound.html
+  upload: public/
 
+# - url: /.*
+#   script: zemis.application
 
-libraries:
-- name: webapp2
-  version: '2.5.2'
-- name: jinja2
-  version: '2.6'
+# libraries:
+# - name: webapp2
+#   version: '2.5.2'
+# - name: jinja2
+#   version: '2.6'
